@@ -1,12 +1,12 @@
 from pytube import YouTube
 from pytube.exceptions import VideoUnavailable ,RegexMatchError
-import os
-a=True 
+import os# import os
+a=True #begining test
 while(a==True):
     try:
         link = input("Enter the YouTube video URL : ") 
         yt = YouTube(link, use_oauth=True, allow_oauth_cache=True)
-        a = input("360 as 1 or 720 as 2 or 1080 as 3 : ") 
+        a = input("360 as 1 or 720 as 2 or 1080 as 3__ or 0 to exit : ") 
         stream=False
         match a:
             case "1":
@@ -15,6 +15,8 @@ while(a==True):
                 stream = yt.streams.filter(res="720p",progressive=True, file_extension='mp4').first()
             case "3":
                 stream = yt.streams.filter(res="1080p",progressive=True, file_extension='mp4').first()
+            case "0":
+                exit(0)
             case _:
                 print("1 or 2 or 3")
         stream.download('C:\\Users\\wasim\\Downloads')
